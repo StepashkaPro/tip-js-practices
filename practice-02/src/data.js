@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 
 export const demoTasks = [
   { id: 1, title: "Изучить функции", completed: true, priority: "medium" },
