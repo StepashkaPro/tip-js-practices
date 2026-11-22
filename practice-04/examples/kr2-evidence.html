@@ -1,0 +1,6 @@
+﻿<!doctype html><html lang="ru"><meta charset="utf-8"><title>КР2 — фактическая проверка валидации</title><style>body{font:20px system-ui;padding:40px;background:#f5f7fb}pre{background:white;padding:24px;white-space:pre-wrap}</style><h1>Задание 1. validateTaskDraft</h1><p>Вызов настоящей функции из src/form-validation.js. tasks = [].</p><pre id="result"></pre><script type="module">
+import {validateTaskDraft} from '../src/form-validation.js';
+const result=[' Изучить localStorage ',' '].map(title=>({draft:{id:'20',title,priority:'high'},result:validateTaskDraft({id:'20',title,priority:'high'},[])}));
+document.querySelector('#result').textContent=JSON.stringify(result,null,2);
+</script></html>
+

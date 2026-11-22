@@ -1,0 +1,67 @@
+{
+  "validation": [
+    {
+      "draft": {
+        "id": "20",
+        "title": " Изучить localStorage ",
+        "priority": "high"
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "id": 20,
+          "title": "Изучить localStorage",
+          "priority": "high"
+        }
+      }
+    },
+    {
+      "draft": {
+        "id": "20",
+        "title": " ",
+        "priority": "high"
+      },
+      "result": {
+        "ok": false,
+        "errors": {
+          "title": "Название должно содержать от 1 до 100 символов."
+        }
+      }
+    }
+  ],
+  "storage": {
+    "version": 1,
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Изучить функции",
+        "completed": true,
+        "priority": "medium"
+      },
+      {
+        "id": 4,
+        "title": "Подготовить модель задач",
+        "completed": false,
+        "priority": "high"
+      },
+      {
+        "id": 7,
+        "title": "Проверить методы массивов",
+        "completed": false,
+        "priority": "low"
+      },
+      {
+        "id": 10,
+        "title": "Оформить README",
+        "completed": true,
+        "priority": "medium"
+      },
+      {
+        "id": 20,
+        "title": "Изучить localStorage",
+        "completed": false,
+        "priority": "high"
+      }
+    ]
+  }
+}

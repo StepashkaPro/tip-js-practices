@@ -1,0 +1,39 @@
+{
+  "ids": [
+    4,
+    13,
+    34
+  ],
+  "meta": {
+    "total": 3,
+    "filters": {
+      "completed": false,
+      "priority": "high",
+      "categoryId": null,
+      "q": ""
+    }
+  },
+  "tasks": [
+    {
+      "id": 4,
+      "title": "Подготовить модель задач",
+      "completed": false,
+      "priority": "high",
+      "categoryId": 2
+    },
+    {
+      "id": 13,
+      "title": "Разобрать Promise",
+      "completed": false,
+      "priority": "high",
+      "categoryId": 1
+    },
+    {
+      "id": 34,
+      "title": "Провести рефакторинг клиента",
+      "completed": false,
+      "priority": "high",
+      "categoryId": 2
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+async toggleTask(id) {
+      const t = tasks.find((t) => t.id === id);
+      if (t) return mutate(() => api.setTaskCompleted(id, !t.completed));
+    },
+async updateTask(id, changes, options) {
+      checkId(id);
+      return single(
+        await client.requestJson("/tasks/" + id, {
+          method: "PATCH",
+          body: changes,
+          ...options,
+        }),
+      );
+    },
+    async setTaskCompleted(id, completed, options) {
+      if (typeof completed !== "boolean")
+        throw new TypeError("Неверный статус");
+      return api.updateTask(id, { completed }, options);
+    },
+async function mutate(action, clear = false) {
+    view.setMutationPending(true);
+    try {
+      await action();
+      if (clear) cancelEdit();
+      view.notify("Операция выполнена.", "success");
+      await load();
+    } catch (e) {
+      if (e.kind !== "aborted") view.notify(messageForError(e), "error");
+    } finally {
+      view.setMutationPending(false);
+    }
+  }
+// Фрагмент load():
+const r = await (initialized
+        ? api.getTasks(filters, { signal: active.signal })
+        : api.loadInitialData(filters, { signal: active.signal }));
+// filters хранятся контроллером; после мутации await load() повторяет текущую выборку.

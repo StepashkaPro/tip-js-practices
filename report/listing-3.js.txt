@@ -1,0 +1,16 @@
+import { createApiClient } from './src/api-client.js';
+import { createTaskApi } from './src/task-api.js';
+const api = createTaskApi(createApiClient({
+  baseUrl: 'http://127.0.0.1:5505/api', timeoutMs: 2000
+}));
+
+// task-api.js
+async getTasks(value = {}, options) {
+      const query = filters(value);
+      const r = await client.requestJson("/tasks", { query, ...options });
+      if (!unique(r?.data, isTask) || !r.meta || r.meta.total !== r.data.length)
+        throw invalidResponse("Неверный список задач");
+      return { tasks: r.data, meta: r.meta };
+    },
+const { tasks, meta } = await api.getTasks({ completed: false, priority: "high" });
+console.log({ ids: tasks.map(t => t.id), total: meta.total });

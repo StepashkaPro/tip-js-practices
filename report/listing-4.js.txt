@@ -1,0 +1,19 @@
+if (!response.ok) {
+          let payload;
+          try {
+            payload = await response.json();
+          } catch {}
+          const e = payload?.error;
+          throw new ApiError(e?.message ?? `HTTP ${response.status}`, {
+            kind: "http",
+            status: response.status,
+            code: e?.code ?? null,
+            details: e?.details ?? null,
+            url,
+          });
+        }
+try {
+  await api.getTaskById(999);
+} catch (error) {
+  console.log({ kind: error.kind, status: error.status });
+}

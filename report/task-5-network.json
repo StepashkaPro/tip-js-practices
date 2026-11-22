@@ -1,0 +1,12 @@
+[
+  {
+    "method": "PATCH",
+    "url": "http://127.0.0.1:5505/api/tasks/4",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:5505/api/tasks?completed=false",
+    "status": 200
+  }
+]

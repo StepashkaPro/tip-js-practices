@@ -1,0 +1,8 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><title>КР2 — фактическая проверка API</title><style>body{font:20px system-ui;padding:40px;background:#f5f7fb}pre{background:white;padding:24px;white-space:pre-wrap}</style><h1 id="heading"></h1><p>Реальный запрос через createApiClient и createTaskApi к http://127.0.0.1:5505/api</p><pre id="result">Ожидание ответа…</pre><script type="module">
+import {createApiClient} from './src/api-client.js';import {createTaskApi} from './src/task-api.js';
+const api=createTaskApi(createApiClient({baseUrl:'http://127.0.0.1:5505/api',timeoutMs:2000}));const errorMode=new URLSearchParams(location.search).has('error');let result;
+document.querySelector('#heading').textContent=errorMode?'Задание 4. HTTP-ошибка 404':'Задание 3. GET с query-параметрами';
+if(errorMode){try{await api.getTaskById(999);result={unexpected:'Успех'};}catch(error){result={caught:true,kind:error.kind,status:error.status,code:error.code,message:error.message,url:error.url};}}
+else{const {tasks,meta}=await api.getTasks({completed:false,priority:'high'});result={ids:tasks.map(t=>t.id),meta,tasks};}
+document.querySelector('#result').textContent=JSON.stringify(result,null,2);
+</script></html>

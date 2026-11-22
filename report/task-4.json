@@ -1,0 +1,8 @@
+{
+  "caught": true,
+  "kind": "http",
+  "status": 404,
+  "code": "TASK_NOT_FOUND",
+  "message": "Задача с id 999 не найдена.",
+  "url": "http://127.0.0.1:5505/api/tasks/999"
+}
